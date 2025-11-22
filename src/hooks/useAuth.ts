@@ -67,11 +67,12 @@ export const useAuth = () => {
     },
   });
 
-  const handleLogout = useCallback(() => {
+  const handleLogout = useCallback(async () => {
     try {
       authService.logout(); // remove token
       queryClient.clear(); // clear react-query cache
       toast.success("Logged out successfully");
+      await new Promise((resolve) => setTimeout(resolve, 100));
 
       window.location.href = ROUTES.LOGIN;
     } catch (error) {

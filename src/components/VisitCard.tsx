@@ -55,7 +55,7 @@ export function VisitCard({ visit, onCancel, isCancelling }: IProps) {
             <div className="flex items-center justify-between pt-3 border-t">
               <span className="text-gray-600 font-medium">Total Amount:</span>
               <span className="text-xl font-bold text-gray-900">
-                {formatCurrency(Number(visit.totalAmount))}
+                {formatCurrency(Number(visit?.totalAmount))}
               </span>
             </div>
           </>

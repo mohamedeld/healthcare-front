@@ -68,7 +68,7 @@ export function PatientDashboard() {
     return (
       <ConfirmModal
         isOpen={isConfirmOpen}
-        message="Are you sure you want to delete this treatment?"
+        message="Are you sure you want to delete this visit?"
         onCancel={() => setIsConfirmOpen(false)}
         onConfirm={() => {
           if (visitToCancel && isConfirmOpen) {

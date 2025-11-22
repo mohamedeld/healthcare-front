@@ -62,8 +62,14 @@ export const useAddTreatment = () => {
 
     onSuccess: (data, { visitId }) => {
       // Replace with real data from server
-      queryClient.setQueryData(QUERY_KEYS.VISIT_DETAIL(visitId), data.visit);
+      queryClient.setQueryData(
+        QUERY_KEYS.VISIT_DETAIL(visitId),
+        data?.visit?._id
+      );
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.MY_VISITS });
+      queryClient.invalidateQueries({
+        queryKey: QUERY_KEYS.VISIT_DETAIL(data?.visit?._id),
+      });
 
       toast.success("Treatment added successfully!");
     },

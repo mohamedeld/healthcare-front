@@ -115,7 +115,7 @@ export const calculatePercentage = (value: number, total: number) => {
 export const API_CONFIG = {
   BASE_URL:
     import.meta.env.VITE_API_URL ||
-    "https://healthcare-two-coral.vercel.app/api",
+    "https://healthcare-690m748ww-mohamedelds-projects.vercel.app/api",
   TIMEOUT: 30000,
 };
 

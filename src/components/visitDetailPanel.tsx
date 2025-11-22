@@ -43,7 +43,7 @@ export function VisitDetailPanel({
           <h2 className="text-2xl font-bold text-gray-900">
             {visit.patient?.name}
           </h2>
-          <p className="text-gray-600">{visit.patientId?.email}</p>
+          <p className="text-gray-600">{visit.patient?.email}</p>
           <p className="text-sm text-gray-500 mt-1">
             {formatDate(visit.scheduledDate, "MMMM dd, yyyy hh:mm a")}
           </p>

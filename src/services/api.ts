@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 const api = axios.create({
   baseURL:
     import.meta.env.VITE_API_URL ||
-    "https://healthcare-690m748ww-mohamedelds-projects.vercel.app/api",
+    "https://healthcare-two-coral.vercel.app/api",
   timeout: 30000,
   headers: {
     "Content-Type": "application/json",

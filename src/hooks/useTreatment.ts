@@ -68,7 +68,7 @@ export const useAddTreatment = () => {
       toast.success("Treatment added successfully!");
     },
 
-    onError: (error, { visitId }, context) => {
+    onError: (error, { visitId }, context: any) => {
       // Rollback on error
       if (context?.previousVisit) {
         queryClient.setQueryData(
@@ -113,19 +113,17 @@ export const useUpdateTreatment = () => {
         (old: Visit) => {
           if (!old) return old;
 
-          const updatedTreatments = old.treatments.map((t) => {
+          const updatedTreatments = old?.treatments?.map((t) => {
             if (t._id === treatmentId) {
               const updated = { ...t, ...data };
-              updated.totalPrice = (
-                updated.unitPrice * updated.quantity
-              ).toFixed(2);
+              updated.totalPrice = Number(updated.unitPrice * updated.quantity);
               return updated;
             }
             return t;
           });
 
           const totalAmount = updatedTreatments
-            .reduce((sum, t) => sum + parseFloat(t.totalPrice), 0)
+            ?.reduce((sum, t) => sum + t?.totalPrice, 0)
             .toFixed(2);
 
           return {
@@ -146,7 +144,7 @@ export const useUpdateTreatment = () => {
       toast.success("Treatment updated successfully!");
     },
 
-    onError: (error, { visitId }, context) => {
+    onError: (error, { visitId }, context: any) => {
       if (context?.previousVisit) {
         queryClient.setQueryData(
           QUERY_KEYS.VISIT_DETAIL(visitId),
@@ -194,7 +192,7 @@ export const useDeleteTreatment = () => {
           );
 
           const totalAmount = updatedTreatments
-            ?.reduce((sum, t) => sum + parseFloat(t.totalPrice ?? 0), 0)
+            ?.reduce((sum, t) => sum + t?.totalPrice, 0)
             .toFixed(2);
 
           return {
@@ -215,7 +213,7 @@ export const useDeleteTreatment = () => {
       toast.success("Treatment deleted successfully!");
     },
 
-    onError: (error, { visitId }, context) => {
+    onError: (error, { visitId }, context: any) => {
       if (context?.previousVisit) {
         queryClient.setQueryData(
           QUERY_KEYS.VISIT_DETAIL(visitId),

@@ -48,9 +48,9 @@ export function VisitDetailsModal({ visit, onClose, onUpdatePayment }: IProps) {
                 <p className="text-gray-900 font-medium">
                   {visit?.patient?.name}
                 </p>
-                <p className="text-gray-600">{visit?.patientId?.email}</p>
-                {visit?.patientId?.phone && (
-                  <p className="text-gray-600">{visit?.patientId?.phone}</p>
+                <p className="text-gray-600">{visit?.patient?.email}</p>
+                {visit?.patient?.phone && (
+                  <p className="text-gray-600">{visit?.patient?.phone}</p>
                 )}
               </div>
             </div>
@@ -66,10 +66,8 @@ export function VisitDetailsModal({ visit, onClose, onUpdatePayment }: IProps) {
                 <p className="text-gray-900 font-medium">
                   {visit.doctor?.name}
                 </p>
-                <p className="text-gray-600">
-                  {visit?.doctorId?.specialization}
-                </p>
-                <p className="text-gray-600">{visit?.doctorId?.email}</p>
+                <p className="text-gray-600">{visit?.doctor?.specialization}</p>
+                <p className="text-gray-600">{visit?.doctor?.email}</p>
               </div>
             </div>
           </div>
